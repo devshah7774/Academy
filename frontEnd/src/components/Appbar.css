@@ -1,0 +1,8 @@
+.popo{
+    padding:7px;
+    cursor: pointer;
+}
+
+.popo:hover{
+    background-color: rgb(218, 214, 214);
+}

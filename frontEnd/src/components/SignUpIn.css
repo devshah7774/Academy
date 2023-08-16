@@ -1,0 +1,205 @@
+/* Popover Styles */
+.signup {
+  flex-grow: 1;
+  overflow-y: scroll;
+  scrollbar-color: #ccc #f0f0f0;
+  position: fixed;
+  height: 90vh;
+  width: 492px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.h1{
+  margin: -1%;
+  margin-top: -5%;
+  margin-bottom: 0.1em;
+  text-align: center;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 35px;
+  letter-spacing: 0px;
+  word-spacing: -3.8px;
+  color: #262626;
+  font-weight: 400;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+}
+
+/* Overlay Styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+  
+/* Main Content Styles */
+/* Adjust the main content to be positioned behind the overlay */
+
+
+.crossdiv {
+  display: flex;
+  justify-content: flex-end;
+  margin: -1%;
+}
+
+.btn-close {
+  border: 0;
+  background: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 150ms;
+}
+.btn-close .icon-cross {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+.btn-close .icon-cross:before, .btn-close .icon-cross:after {
+  content: "";
+  position: absolute;
+  top: 8.5px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: #000000;
+  border-radius: 3px;
+}
+.btn-close .icon-cross:before {
+  transform: rotate(45deg);
+}
+.btn-close .icon-cross:after {
+  transform: rotate(-45deg);
+}
+.btn-close .icon-cross span {
+  display: block;
+}
+.btn-close:hover, .btn-close:focus {
+  transform: rotateZ(90deg);
+  background: #bbe1fe;
+}
+
+.heading{
+  padding-top:1.5em;
+  padding-left: 4em;
+  font-family: Verdana, Geneva, sans-serif;
+  color: #4F4F4F;
+  font-weight: bold;
+}
+
+.input-box {
+  background: #fff;
+  border: 1px solid #636363;
+  border-radius: 2px;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 12px 16px;
+  width: 75%;
+  color: var(--cds-color-neutral-primary);
+  transition: border-color 0.25s ease-out;
+}
+
+/* Style for the input box when focused */
+.input-box:focus {
+  border-color: #2a73cc;
+  outline: none;
+}
+
+.input-box:focus::placeholder {
+  color: rgba(186, 182, 182, 0.921);
+}
+
+/* Apply styles to the eye container */
+.eye-container {
+  cursor: pointer;
+  margin-top: 0.5em;
+  margin-left:-11%;
+}
+.eye-container:hover circle, .eye-container:hover ellipse, .eye-container:hover line {
+  stroke: #2a73cc;
+}
+
+/* Add this CSS to your stylesheet */
+.signup-button {
+  margin-left: 4.2em;
+  margin-top: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 73%;
+  min-height: 48px;
+  background-color: #0056d2;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup-button:hover{
+  background-color: #1859a9;
+}
+
+.divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+}
+
+.divider-line {
+  flex: 0.4;
+  height: 1px;
+  background-color: #4F4F4F;
+}
+
+.divider-text {
+  margin: 0 10px;
+  color: #262626a3;
+}
+
+.google{
+  text-align: center;
+  font-weight: bold;
+  margin-left: 4em;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18.5em;
+  min-height: 40px;
+  border: 1px solid #636363;
+  border-radius: 2px;
+  font-size: 16px;
+  line-height: 22px;
+  padding-left: 4em;
+  cursor: pointer;
+}
+
+.google:hover{
+  color: #154587;
+  background-color: #eaf1fc;
+}
