@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const conf = require("./config.json")
+const conf = require("../config.json")
 const SECRET = conf.SECRET;  // This should be in an environment variable in a real application
 
 const authenticateJwt = (req, res, next) => {
