@@ -1,6 +1,11 @@
-# Course Selling Website
+![Logo!](frontEnd/public/init.png)
 
-Welcome to the Course Selling Website! This is a platform that allows educators to create and manage their courses while enabling students to browse and purchase courses from various educators. The application is built using a variety of technologies including React, JavaScript, CSS, Node.js, MongoDB, Express, and several popular libraries such as Material-UI, Recoil, Axios, and React Router DOM.
+# Academy
+
+Welcome to Academy! 
+This is a platform that allows educators to create and manage their courses while enabling students to browse and purchase courses from various educators. 
+
+The application is built using a variety of technologies including **React**, **JavaScript**, CSS, **Node.js**, **MongoDB**, **Express**, and several popular libraries such as **Material-UI**, Recoil, Axios, and React Router DOM.
 
 ## Features
 
