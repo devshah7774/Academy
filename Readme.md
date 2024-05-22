@@ -1,4 +1,4 @@
-![Logo!](frontEnd/public/init.png)
+![Logo!](frontEnd/src/assets/init.png)
 
 # Academy
 

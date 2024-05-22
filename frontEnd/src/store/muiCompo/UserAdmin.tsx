@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import { styled } from '@mui/material/styles';
 import RadioGroup, { useRadioGroup } from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -6,7 +6,7 @@ import Radio from '@mui/material/Radio';
 import { useSetRecoilState } from 'recoil';
 import {typeuser} from '../atoms/typeuser'
 
-const StyledFormControlLabel = styled((props) => <FormControlLabel {...props} />)(
+const StyledFormControlLabel = styled((props:{checked:boolean}) => <FormControlLabel control={<></>} label={undefined} {...props} />)(
   ({ theme, checked }) => ({
     '.MuiFormControlLabel-label': checked && {
       color: theme.palette.primary.main,
@@ -14,11 +14,11 @@ const StyledFormControlLabel = styled((props) => <FormControlLabel {...props} />
   }),
 );
 
-function MyFormControlLabel(props) {
+function MyFormControlLabel(props:{value:string, label:string, control:ReactJSXElement}) {
   const radioGroup = useRadioGroup();
   const setTypeUser = useSetRecoilState(typeuser);
 
-  let checked = false;
+  let checked:boolean = false;
 
   if (radioGroup) {
     checked = radioGroup.value === props.value;

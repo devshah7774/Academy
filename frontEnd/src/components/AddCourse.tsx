@@ -5,15 +5,15 @@ import Card from '@mui/material/Card';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-function AddCourse() {
+function AddCourse():React.ReactNode {
   
-  const [title, setTitle]=useState("");
-  const [imageLink, setUrl]=useState("");
-  const [description, setDescription]=useState("");
-  const [price, setPrice]=useState(0);
-  const [published, setPub]=useState(false);
+  const [title, setTitle] = useState<string>("");
+  const [imageLink, setUrl] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [price, setPrice] = useState<number>(0);
+  const [published, setPub] = useState<boolean>(false);
 
-  const handlePub=()=>{
+  const handlePub=():void=>{
     setPub(!published);
   }
 
@@ -37,7 +37,7 @@ function AddCourse() {
           id="title" 
           label="Title" 
           variant="outlined" 
-          onChange={(e)=>{
+          onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{
             setTitle(e.target.value);
           }}
         />
@@ -48,7 +48,7 @@ function AddCourse() {
           label="Description" 
           type="text"
           variant="outlined"   
-          onChange={(e)=>{
+          onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{
             setDescription(e.target.value);
           }}       
         />
@@ -59,8 +59,8 @@ function AddCourse() {
           label="Price" 
           type="number"
           variant="outlined"   
-          onChange={(e)=>{
-            setPrice(e.target.value);
+          onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{
+            setPrice(parseFloat(e.target.value));
           }}       
         />
         <br/><br/>
@@ -70,7 +70,7 @@ function AddCourse() {
           label="Image Link" 
           type="url"
           variant="outlined"   
-          onChange={(e)=>{
+          onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{
             setUrl(e.target.value);
           }}       
         />

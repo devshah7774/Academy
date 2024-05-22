@@ -1,11 +1,11 @@
-import AddCourse from './components/AddCourse.jsx';
+import AddCourse from './components/AddCourse';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
-import Appbar from "./components/Appbar.jsx"
-import Landing from './components/Landing.jsx';
-import InitUser from "./components/InitUser.jsx";
-import Courses from './components/Course.jsx';
-import CrsId from './components/CrsId.jsx';
+import Appbar from "./components/Appbar"
+import Landing from './components/Landing';
+import InitUser from "./components/InitUser";
+import Courses from './components/Course';
+import CrsId from './components/CrsId';
 
 function App() {
 

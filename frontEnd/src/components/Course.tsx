@@ -8,7 +8,7 @@ import {useRecoilValue} from "recoil";
 import {userRole} from "../store/selectors/userRole"
 import axios from "axios";
 
-const handlePurchase = async(courseId)=>{
+const handlePurchase = async(courseId:string)=>{
     const response = await axios.post(`${BASE_URL}/user/courses/`+courseId, {},{
         headers:{
             "Content-type":"application/json",
@@ -17,7 +17,7 @@ const handlePurchase = async(courseId)=>{
     });
     alert(response.data.message);
 }
-const handleDelete = async(courseId)=>{
+const handleDelete = async(courseId:string)=>{
     const response = await axios.delete(`${BASE_URL}/admin/course/`+courseId,{
         headers:{
             "Content-type":"application/json",
@@ -28,8 +28,8 @@ const handleDelete = async(courseId)=>{
 }
 
 function Courses(){
-    const [courses, setCourses] = useState([]);
-    const navigate=useNavigate();
+    const [courses, setCourses] = useState<CourseType[]>([]);
+    const navigate = useNavigate();
     const role = useRecoilValue(userRole);
 
     const render = async()=>{
@@ -59,15 +59,15 @@ function Courses(){
     </>
 }
 
-function Course(props){
+function Course(props:createProp):React.ReactNode{
     const navigate=useNavigate();
     return <Card variant="outlined" style={{width:230, padding: 20, minHeight:200, margin:"5px"}}>
         <div>
             <Typography variant="h5" textAlign={"center"}>{props.course.title}</Typography>
-            <Typography variant="" textAlign={"center"}>Id: {props.course.id}</Typography><br/>
-            <Typography variant="" textAlign={"center"}>{props.course.description}</Typography><br/>
-            <Typography variant="" textAlign={"center"}>Price: {props.course.price}</Typography><br/>
-            <Typography variant="" textAlign={"center"}>Published: {props.course.published?"true":"false"}</Typography>
+            <Typography variant="h4" textAlign={"center"}>Id: {props.course._id}</Typography><br/>
+            <Typography variant="h3" textAlign={"center"}>{props.course.description}</Typography><br/>
+            <Typography variant="h3" textAlign={"center"}>Price: {props.course.price}</Typography><br/>
+            <Typography variant="h2" textAlign={"center"}>Published: {props.course.published?"true":"false"}</Typography>
             <div style={{display:"flex", justifyContent:"center", marginTop:"10px"}}><img src={props.course.imageLink} width="220px"/></div>
             <br/><br/>
             {(props.role==='admin')&&(<Button 
@@ -96,3 +96,22 @@ function Course(props){
 }
 
 export default Courses;
+
+
+interface CourseType{
+  _id: string,
+  role: string,
+  adminID: string,
+  adminName: string,
+  title: string,
+  description: string,
+  price: number,
+  imageLink: string,
+  published: boolean
+}
+
+interface createProp {
+  key: string,
+  course: CourseType,
+  role: string
+}

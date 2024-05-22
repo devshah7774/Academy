@@ -1,32 +1,32 @@
 import { deepOrange } from "@mui/material/colors";
 import Avatar from "@mui/material/Avatar";
-import { LinearProgress, Typography } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 import Button from "@mui/material/Button"
 import Popover from '@mui/material/Popover';
 import { useNavigate} from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import {userEmailState} from "../store/selectors/userEmailState";
 import {isUserLoading} from "../store/selectors/isUserLoading";
-import {name} from "../store/selectors/name"
-import {userRole} from "../store/selectors/userRole"
+import {name} from "../store/selectors/name";
+import {userRole} from "../store/selectors/userRole";
 import * as React from 'react';
 import "./Appbar.css";
 
-function Appbar() {
+const Appbar: React.FC = () => {
   
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const navigate = useNavigate();
   const userEmail = useRecoilValue(userEmailState);
   const userLoading = useRecoilValue(isUserLoading);
-  const name_ = useRecoilValue(name);
+  const name_:string = useRecoilValue(name);
   const role = useRecoilValue(userRole);
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
   
-  const handleClick = (event) => {
+  const handleClick = (event:any) => {
     setAnchorEl(event.currentTarget);
   };
-  
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -35,7 +35,7 @@ function Appbar() {
     return <center><LinearProgress/></center>;
   }
 
-  return (        
+  return (  
   <div style={{
     display:"flex",
     justifyContent:"space-between",
@@ -48,10 +48,10 @@ function Appbar() {
       onClick={() => {
         navigate("/");
     }}>
-      <img src='../init.png' style={{width:"200px", height:"80%"}} alt="AcaDemy"/>
+      <img src='../src/assets/init.png' style={{width:"200px", height:"80%"}} alt="AcaDemy"/>
     </div>
 
-    {!userEmail && <div style={{display: "flex"}}>
+    {!userEmail ? (<div style={{display: "flex"}}>
       <div style={{marginRight: 10, marginTop:10}}>
         <Button
           className="glow-on-hover"
@@ -72,12 +72,10 @@ function Appbar() {
           // disabled={loc.pathname==="/signin"}
         >Signin</Button>
       </div>
-    </div>}
-
-    {userEmail && 
-      <div style={{ marginRight:20, marginTop: 3, cursor: "pointer" }}>
+    </div>) :  
+      (<div style={{ marginRight:20, marginTop: 3, cursor: "pointer" }}>
         <Avatar onClick={handleClick}
-          sx={{ bgcolor: deepOrange[500], width: 46, height: 46, fontSize: 20 }}>{name_.charAt(0)}
+          sx={{ bgcolor: deepOrange[500], width: 46, height: 46, fontSize: 20, cursor: "pointer" }}>{name_.charAt(0)}
         </Avatar>
         <Popover
         id={id}
@@ -87,16 +85,17 @@ function Appbar() {
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
-        }}
-      ><div style={{margin:20, display:"flex", flexDirection:"column", fontSize:"15px", fontFamily:"sans-serif"}}>
-        {role==='user'&&(<div className="popo" onClick={()=>{navigate("/user/courses/?purchased=true")}}>My Courses</div>)}
-        <div className="popo" onClick={()=>{}}>Profile</div>
-        <div className="popo" onClick={()=>{localStorage.removeItem("AcaToken"); window.location="/"}}>Log Out</div>
-      </div>
-      </Popover>
-      </div>
-    }
-  </div>);
-}
+        }}>
+          <div style={{margin:20, display:"flex", flexDirection:"column", fontSize:"15px", fontFamily:"sans-serif"}}>
+            {role==='user'&&(<div className="popo" onClick={()=>{navigate("/user/courses/?purchased=true")}}>My Courses</div>)}
+            <div className="popo" onClick={()=>{}}>Profile</div>
+            <div className="popo" onClick={()=>{localStorage.removeItem("AcaToken"); window.location.href="/";}}>Log Out</div>
+          </div>
+          </Popover>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default Appbar;
