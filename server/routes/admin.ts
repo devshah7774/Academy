@@ -1,8 +1,7 @@
-const express = require('express');
-const { Course, Admin } = require("../db");
-const jwt = require('jsonwebtoken');
-const { SECRET } = require("../middleware/auth")
-const { authenticateJwt } = require("../middleware/auth");
+import express from 'express';
+import { Course, Admin } from "../db";
+import jwt from 'jsonwebtoken';
+import { authenticateJwt, SECRET } from "../middleware/auth";
 
 const router = express.Router();
 
@@ -34,8 +33,9 @@ router.post('/login', async (req, res) => {
 
 router.post('/courses', authenticateJwt, async (req, res) => {
   const obj = req.body;
-  obj.adminID = req.user.username;
-  const adm = await Admin.findOne({username:req.user.username});
+  obj.adminID = req.headers.userEmail;
+  const adm = await Admin.findOne({username:req.headers.userEmail});
+  if(adm==null){ return res.sendStatus(403); }
   obj.adminName = adm.name;
   const course = new Course(obj);
   await course.save();
@@ -44,7 +44,7 @@ router.post('/courses', authenticateJwt, async (req, res) => {
 });
 
 router.put('/courses/:courseId', authenticateJwt, async (req, res) => {
-  const validCIDs = (await Course.find({ adminID: req.user.username })).map(course => course.id);
+  const validCIDs = (await Course.find({ adminID: req.headers.userEmail })).map(course => course.id);
   const targetID = validCIDs.find(id => id === req.params.courseId);
   const course = await Course.findByIdAndUpdate(targetID, req.body, { new: true });
 
@@ -56,12 +56,12 @@ router.put('/courses/:courseId', authenticateJwt, async (req, res) => {
 });
 
 router.get('/courses', authenticateJwt, async (req, res) => {
-  const courses = await Course.find({ adminID: req.user.username });
+  const courses = await Course.find({ adminID: req.headers.userEmail });
   res.json({ courses });
 });
 
 router.get('/course/:courseId', authenticateJwt, async (req, res) => {
-  const validCIDs = (await Course.find({ adminID: req.user.username })).map(course => course.id);
+  const validCIDs = (await Course.find({ adminID: req.headers.userEmail })).map(course => course.id);
   const targetID = validCIDs.find(id => id === req.params.courseId);
   const course = await Course.findById(targetID);
   if(course)res.json({ course });
@@ -78,4 +78,4 @@ router.delete('/course/:courseId', authenticateJwt, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

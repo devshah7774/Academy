@@ -61,13 +61,13 @@ function Courses(){
 
 function Course(props:createProp):React.ReactNode{
     const navigate=useNavigate();
-    return <Card variant="outlined" style={{width:230, padding: 20, minHeight:200, margin:"5px"}}>
+    return <Card variant="outlined" style={{width:"380px", padding: 20, minHeight:200, margin:"5px"}}>
         <div>
-            <Typography variant="h5" textAlign={"center"}>{props.course.title}</Typography>
-            <Typography variant="h4" textAlign={"center"}>Id: {props.course._id}</Typography><br/>
-            <Typography variant="h3" textAlign={"center"}>{props.course.description}</Typography><br/>
-            <Typography variant="h3" textAlign={"center"}>Price: {props.course.price}</Typography><br/>
-            <Typography variant="h2" textAlign={"center"}>Published: {props.course.published?"true":"false"}</Typography>
+            <Typography variant="h4" textAlign={"center"}>{props.course.title}</Typography>
+            <Typography textAlign={"center"}>Id: {props.course._id}</Typography>
+            <Typography variant="h5" textAlign={"center"}>{props.course.description}</Typography>
+            <Typography variant="h6" textAlign={"center"}>Price: {props.course.price}</Typography>
+            <Typography variant="h6" textAlign={"center"}>Published: {props.course.published?"true":"false"}</Typography>
             <div style={{display:"flex", justifyContent:"center", marginTop:"10px"}}><img src={props.course.imageLink} width="220px"/></div>
             <br/><br/>
             {(props.role==='admin')&&(<Button 

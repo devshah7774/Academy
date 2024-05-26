@@ -1,7 +1,8 @@
-const express = require('express');
-const jwt = require("jsonwebtoken");
-const { authenticateJwt, SECRET } = require("../middleware/auth");
-const { User, Course } = require("../db");
+import express from 'express';
+import jwt from "jsonwebtoken";
+import { authenticateJwt, SECRET } from "../middleware/auth";
+import { User, Course } from "../db";
+
 const router = express.Router();
 
 router.post('/signup', async (req, res) => {
@@ -39,9 +40,9 @@ router.post('/courses/:courseId', authenticateJwt, async (req, res) => {
     published: true
   });
   if (course) {
-    const user = await User.findOne({ username: req.user.username });
+    const user = await User.findOne({ username: req.headers.userEmail });
     if (user) {
-      user.purchasedCourses.push(course);
+      user.purchasedCourses.push(course.id);
       await user.save();
       res.json({ message: 'Course purchased successfully' });
     } else {
@@ -66,7 +67,7 @@ router.get('/courses/:courseId', authenticateJwt, async (req, res) => {
 });
 
 router.get('/purchasedCourses', authenticateJwt, async (req, res) => {
-  const user = await User.findOne({ username: req.user.username }).populate('purchasedCourses');
+  const user = await User.findOne({ username: req.headers.userEmail }).populate('purchasedCourses');
   if (user) {
     res.json({ purchasedCourses: user.purchasedCourses || [] });
   } else {
@@ -74,4 +75,4 @@ router.get('/purchasedCourses', authenticateJwt, async (req, res) => {
   }
 });
 
-module.exports = router
+export default router;

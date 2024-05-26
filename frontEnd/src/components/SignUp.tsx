@@ -1,6 +1,6 @@
 import "./SignUpIn.css"
 import {useNavigate} from "react-router-dom"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BASE_URL } from "../config";
 import axios from "axios";
 import UserAdmin from "../store/muiCompo/UserAdmin";
@@ -14,6 +14,7 @@ function Signup(){
   const [username, setuserName] = useState("");
   const [password, setPassword] = useState("");
   const usertypo = useRecoilValue(typeuser);
+  useEffect(()=>{},[usertypo]);
 
    function isOk(){
     let str="";
@@ -82,8 +83,9 @@ function Signup(){
       className="signup-button"
       onClick={async()=>{
         if(!isOk())return;
+        const role  = usertypo;
         const response = await axios.post(`${BASE_URL}/${usertypo}/signup`,{
-          username, password, name
+          username, password, name, role
         })
         let data = response.data;
         alert(data.message);
