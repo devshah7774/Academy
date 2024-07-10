@@ -1,3 +1,51 @@
+#pricing{
+    height: 38px;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: underline;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer; 
+    border: none;
+}
+
+#signup{
+    height: 38px;
+    width: 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    font-weight: 600;
+    color: white;
+    background-color: black;
+    border: solid 2px red;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+#login{
+    height: 38px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: underline;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    font-weight: 600;
+    color: black;
+    background-color: white;
+    border: solid 2px red;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
 .popo{
     padding:7px;
     cursor: pointer;

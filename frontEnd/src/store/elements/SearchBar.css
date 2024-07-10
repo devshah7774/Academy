@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+.search-box-container {
+  display: inline-block;
+  box-sizing: content-box;
+  height: 35px;
+  width: 40px;
+  padding: 0;
+  border: solid 2px red;
+  border-radius: 28px;
+  overflow: hidden;
+  transition: width 500ms cubic-bezier(1,-0.73, 0.27, 1.55);
+}
+
+.search-box-container * {
+  display: inline-block;
+  margin: 0;
+  height: 100%;
+  padding: 5px;
+  border: 0;
+  outline: none;
+}
+
+.search-box {
+  width: calc(100% - 50px);
+  padding: 0 20px;
+  float: left;
+  font-family: "Lato", sans-serif;
+  font-size: 1em;
+  color: #212121;
+  background-color: #fff;
+}
+
+.submit {
+  float: right;
+  width: 50px;
+  left: 0;
+  top: 0;
+  font-size: 1.2em;
+  text-align: center;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.submit svg {
+  margin: 1px;
+  height: 23px;
+  color: #000000;
+}
