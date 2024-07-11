@@ -2,6 +2,28 @@ import { useState, useRef, useEffect } from 'react';
 import "./Dropdown.css";
 
 //@ts-ignore
+const DropdownItem:any = ({ item, depth = 0 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const hasChildren:boolean = item.children && item.children.length > 0;
+
+  return (
+    <li className={`dropdown-item ${hasChildren ? 'has-children' : ''}`}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <span>{item.label}</span>
+      {hasChildren && isOpen && (
+        <ul className={`dropdown-submenu depth-${depth}`}>
+          {item.children.map((child:any, index:any) => (
+            <DropdownItem key={index} item={child} depth={depth + 1} />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+};
+
+//@ts-ignore
 const Dropdown:any = ({ title, items }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef:any = useRef(null);
@@ -33,9 +55,7 @@ const Dropdown:any = ({ title, items }) => {
       {isOpen && (
         <ul className="dropdown-menu">
           {items.map((item:any, index:any) => (
-            <li key={index} onClick={() => console.log(`Clicked: ${item}`)}>
-              {item}
-            </li>
+            <DropdownItem key={index} item={item} />
           ))}
         </ul>
       )}

@@ -6,7 +6,7 @@
   display: inline-block;
   box-sizing: content-box;
   height: 35px;
-  width: 40px;
+  width: 60px;
   padding: 0;
   border: solid 2px red;
   border-radius: 28px;
@@ -27,8 +27,8 @@
   width: calc(100% - 50px);
   padding: 0 20px;
   float: left;
-  font-family: "Lato", sans-serif;
-  font-size: 1em;
+  font-family: inherit;
+  font-size: 1.1em;
   color: #212121;
   background-color: #fff;
 }
@@ -40,12 +40,12 @@
   top: 0;
   font-size: 1.2em;
   text-align: center;
-  cursor: pointer;
+  cursor: text;
   background-color: #fff;
 }
 
 .submit svg {
-  margin: 1px;
+  margin-top: -3px;
   height: 23px;
   color: #000000;
 }

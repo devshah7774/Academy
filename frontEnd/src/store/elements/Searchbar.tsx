@@ -6,8 +6,7 @@ import './SearchBar.css';
 function SearchBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
-  const [response, setResponse] = useState('');
-  const [responseOpacity, setResponseOpacity] = useState(0);
+  // const [response, setResponse] = useState('');
   const searchBoxRef:any = useRef(null);
   const containerRef:any = useRef(null);
 
@@ -20,38 +19,23 @@ function SearchBar() {
   const toggleState = (open:any) => {
     setIsOpen(open);
     if (containerRef.current) {
-      containerRef.current.style.width = open ? '300px' : '50px';
+      containerRef.current.style.width = open ? '300px' : '60px';
     }
   };
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
     toggleState(!isOpen);
-    if (!isOpen) {
-      handleRequest();
-    }
   };
 
   const handleKeyPress = (e:any) => {
     if (e.key === 'Enter') {
       toggleState(false);
-      handleRequest();
     }
   };
 
   const handleBlur = () => {
     toggleState(false);
-  };
-
-  const handleRequest = () => {
-    if (searchValue.length > 0) {
-      setResponse(`Searching for "${searchValue}" . . .`);
-      setResponseOpacity(1);
-      setSearchValue('');
-      setTimeout(() => {
-        setResponseOpacity(0);
-      }, 2300);
-    }
   };
 
   return (
@@ -69,9 +53,6 @@ function SearchBar() {
           onBlur={handleBlur}
         />
       </div>
-      <h3 className="response" style={{ opacity: responseOpacity }}>
-        {response}
-      </h3>
     </div>
   );
 }

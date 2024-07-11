@@ -12,7 +12,39 @@ import Dropdown from '../store/elements/Dropdown';
 
 const Appbar: React.FC = () => {
   
-  const categories = ['Electronics', 'Clothing', 'Books', 'Home & Garden'];
+  const categories = [
+    {
+      label: 'Electronics',
+      children: [
+        { label: 'Computers' },
+        { label: 'Smartphones' },
+        {
+          label: 'Accessories',
+          children: [
+            { label: 'Headphones' },
+            { label: 'Chargers' },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Clothing',
+      children: [
+        { label: 'Men' },
+        { label: 'Women' },
+        { label: 'Children' },
+      ],
+    },
+    { label: 'Books' },
+    {
+      label: 'Home & Garden',
+      children: [
+        { label: 'Furniture' },
+        { label: 'Decor' },
+        { label: 'Gardening' },
+      ],
+    },
+  ];
   
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const navigate = useNavigate();
