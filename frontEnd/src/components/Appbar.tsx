@@ -6,7 +6,7 @@ import {isUserLoading} from "../store/selectors/isUserLoading";
 import {name} from "../store/selectors/name";
 import {userRole} from "../store/selectors/userRole";
 import SearchBar from "../store/elements/Searchbar"
-import Cart from "../store/elements/cart";
+import { Cart, Bars, ThemeIcon } from "../store/elements/cart";
 import "./Appbar.css";
 import Dropdown from '../store/elements/Dropdown';
 
@@ -68,91 +68,85 @@ const Appbar: React.FC = () => {
   }
 
   return (  
-  <div style={{
-    display:"flex",
-    justifyContent:"space-between",
-    width:"100 vw",
-    height:"60px",
-    borderBottom:"2mm ridge #2799be"
-  }}>
-    <div style={{ display:"flex", marginLeft: 10 }}>
-      <div style={{ marginRight: 20, cursor: "pointer"}} onClick={() => { navigate("/"); }}>
-        <img src='../src/assets/init.png' style={{ width:"200px", height:"50px" }} alt="AcaDemy"/>
+    <div className='flex sticky items-center justify-between h-16 w-screen border-b-2 border-[#034359] shadow-md sm:h-20 z-50'>
+    <div className="flex cursor-pointer ml-2 px-4 md:hidden"><Bars/></div>
+      <div className='flex justify-center'>
+      <div className='mr-5 ml-2 cursor-pointer' onClick={() => { navigate("/"); }}>
+        <img className='w-38 h-12 sm:w-52 sm:h-14 md:ml-4' src='../src/assets/init.png' alt="AcaDemy"/>
       </div>
-      <div style={{ marginTop:5, marginRight:10 }}>
+      
+      <div className='hidden lg:flex mr-32'>
         <Dropdown title="Categories" items={categories} />
       </div>
-      <div style={{ marginTop:5, marginLeft:10 }}>
+      <div className='hidden lg:flex ml-4'>
         <SearchBar/>        
       </div>
-    </div>
-
-    {!userEmail ? (
-    <div style={{display: "flex"}}>
-
-      <div style={{ marginRight:10, marginTop:5 }}>
-        <button
-          id="pricing"
-          onClick={() => {
-            navigate("/?authMode=signup")
-          }}
-          // disabled={loc.pathname==="/signin"}
-        >Free Demo</button>
       </div>
 
-      <div style={{ marginRight:10, marginTop:5 }}>
-        <button
-          id="pricing"
-          onClick={() => {
-            navigate("/?authMode=signup")
-          }}
-          // disabled={loc.pathname==="/signin"}
-        >Pricing</button>
-      </div>
-
-      <div style={{ cursor:"pointer", alignContent:"center", marginRight:20, marginLeft:-10 }}><Cart/></div>
-
-      <div style={{ marginRight: 10, marginTop:5}}>
-        <button
-          id="login"
-          onClick={() => {
-            navigate("/?authMode=login")
-          }}
-          // disabled={loc.pathname==="/signup"}
-        >Login</button>
-      </div>
-
-      <div style={{ marginRight:10, marginTop:5 }}>
-        <button
-          id="signup"
-          onClick={() => {
-            navigate("/?authMode=signup")
-          }}
-          // disabled={loc.pathname==="/signin"}
-        >Signup</button>
-      </div>
-    </div>) :  
-      (<div style={{ marginRight:20, marginTop: 3, cursor: "pointer" }}>
-        {/* <Avatar onClick={handleClick}
-          sx={{ bgcolor: deepOrange[500], width: 46, height: 46, fontSize: 20, cursor: "pointer" }}>{name_.charAt(0)}
-        </Avatar>
-        <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}>
-          <div style={{margin:20, display:"flex", flexDirection:"column", fontSize:"15px", fontFamily:"sans-serif"}}>
-            {role==='user'&&(<div className="popo" onClick={()=>{navigate("/user/courses/?purchased=true")}}>My Courses</div>)}
-            <div className="popo" onClick={()=>{}}>Profile</div>
-            <div className="popo" onClick={()=>{localStorage.removeItem("AcaToken"); window.location.href="/";}}>Log Out</div>
-          </div>
-          </Popover> */}
+      <div className='flex items-center justify-center'>
+        <div className='mx-2 mr-2 md:mr-6 cursor-pointer'><ThemeIcon/></div>
+        <div className='mx-2 mr-6 cursor-pointer'><Cart/></div>
+        
+        {!userEmail ? (
+        <div className='hidden md:flex'>
+        <div className='hidden lg:flex mr-2'>
+          <button
+            id="pricing"
+            onClick={() => {
+              navigate("/?authMode=signup")
+            }}
+          >Free Demo</button>
         </div>
-      )}
+  
+        <div className='hidden lg:flex top-1'>
+          <button
+            id="pricing"
+            onClick={() => {
+              navigate("/?authMode=signup")
+            }}
+          >Pricing</button>
+        </div>
+        
+        <div className='mr-2'>
+          <button
+            id="login"
+            onClick={() => {
+              navigate("/?authMode=login")
+            }}
+          >Login</button>
+        </div>
+  
+        <div className='mr-3'>
+          <button
+            id="signup"
+            onClick={() => {
+              navigate("/?authMode=signup")
+            }}
+          >Signup</button>
+        </div>
+      </div>) :  
+        (<div style={{ marginRight:20, marginTop: 3, cursor: "pointer" }}>
+          {/* <Avatar onClick={handleClick}
+            sx={{ bgcolor: deepOrange[500], width: 46, height: 46, fontSize: 20, cursor: "pointer" }}>{name_.charAt(0)}
+          </Avatar>
+          <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}>
+            <div style={{margin:20, display:"flex", flexDirection:"column", fontSize:"15px", fontFamily:"sans-serif"}}>
+              {role==='user'&&(<div className="popo" onClick={()=>{navigate("/user/courses/?purchased=true")}}>My Courses</div>)}
+              <div className="popo" onClick={()=>{}}>Profile</div>
+              <div className="popo" onClick={()=>{localStorage.removeItem("AcaToken"); window.location.href="/";}}>Log Out</div>
+            </div>
+            </Popover> */}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

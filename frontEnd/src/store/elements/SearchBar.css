@@ -3,7 +3,8 @@
 }
 
 .search-box-container {
-  display: inline-block;
+  position: absolute;
+  margin-top: 2px;
   box-sizing: content-box;
   height: 35px;
   width: 60px;
@@ -15,8 +16,6 @@
 }
 
 .search-box-container * {
-  display: inline-block;
-  margin: 0;
   height: 100%;
   padding: 5px;
   border: 0;
@@ -29,6 +28,7 @@
   float: left;
   font-family: inherit;
   font-size: 1.1em;
+  margin-top: 0.2em;
   color: #212121;
   background-color: #fff;
 }
@@ -45,7 +45,6 @@
 }
 
 .submit svg {
-  margin-top: -3px;
   height: 23px;
   color: #000000;
 }
