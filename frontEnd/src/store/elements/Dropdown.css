@@ -29,7 +29,7 @@
 
 /* Dropdown Styles */
 .dropdown {
-  position: relative;
+  position: absolute;
 }
 
 .dropdown:hover {
@@ -37,6 +37,7 @@
 }
 
 .dropdown-toggle {
+  margin-top: 3px;
   height: 38px;
   width: 100px;
   display: flex;

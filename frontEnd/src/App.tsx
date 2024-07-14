@@ -3,7 +3,7 @@ import { RecoilRoot } from 'recoil';
 import Appbar from "./components/Appbar"
 import InitUser from "./components/InitUser";
 // import AddCourse from './components/AddCourse';
-// import Landing from './components/Landing';
+import Landing from './components/Landing';
 // import Courses from './components/Course';
 // import CrsId from './components/CrsId';
 
@@ -14,13 +14,13 @@ function App() {
       <Router>
         <Appbar/>
         <InitUser/>
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<Landing/>}/>
-        <Route path={"/admin/addcourse"} element={<AddCourse />} />
+        {/* <Route path={"/admin/addcourse"} element={<AddCourse />} />
         <Route path={"/admin/courses"} element={<Courses />} />
         <Route path={"/user/courses"} element={<Courses />} />
-        <Route path={"/admin/courses/:courseId"} element={<CrsId />} />
-      </Routes> */}
+        <Route path={"/admin/courses/:courseId"} element={<CrsId />} /> */}
+      </Routes>
       </Router>
     </RecoilRoot>
   );
